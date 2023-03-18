@@ -1,20 +1,17 @@
 import Head from "next/head";
 import { useState } from "react";
 import axios from "axios";
+import { FaUserAlt } from "react-icons/fa";
+
 import { useRouter } from "next/router";
 
 export default function Home() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const router = useRouter();
-  const submitForm: React.FormEventHandler<HTMLFormElement> = async (
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
-    e.preventDefault();
+  const signInHandler = async (username: string) => {
     try {
       const res = await axios.post("/api/auth", {
         username,
-        password,
+        password: "password",
       });
       if (res.status === 200) {
         router.push("/dashboard");
@@ -23,6 +20,7 @@ export default function Home() {
       console.log(error);
     }
   };
+
   return (
     <>
       <Head>
@@ -31,12 +29,25 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <form onSubmit={submitForm}>
-          <input onChange={(e) => setUsername(e.target.value)} />
-          <input onChange={(e) => setPassword(e.target.value)} />
-          <button>Log in</button>
-        </form>
+      <main className="bg-gray-900 w-screen h-screen flex gap-12 justify-center items-center">
+        <button
+          onClick={() => signInHandler("user1")}
+          className="rounded-3xl text-gray-900 shadow-md shadow-gray-700 w-72 h-72 hover:bg-green-400 bg-green-500 flex flex-col justify-around items-center"
+        >
+          <FaUserAlt size={120} />
+          <h2 className="text-lg max-w-[70%]  font-bold">
+            Sign In As The User With Access To The Settings Page
+          </h2>
+        </button>
+        <button
+          onClick={() => signInHandler("user2")}
+          className="rounded-3xl text-gray-900 shadow-md shadow-gray-700 w-72 h-72 hover:bg-rose-400 bg-rose-500 flex flex-col justify-around items-center"
+        >
+          <FaUserAlt size={120} />
+          <h2 className="text-lg max-w-[70%]  font-bold">
+            Sign In As The User WithOut Access To The Settings Page
+          </h2>
+        </button>
       </main>
     </>
   );
