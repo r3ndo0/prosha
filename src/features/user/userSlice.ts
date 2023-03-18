@@ -1,24 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
-export type user = {
-  id: number;
+export type UserSlice = {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
   username: string;
-  hasAccessToSettingsPage: boolean;
-} | null;
-const initialState: user = {
-  id: 1,
-  username: "user1",
-  hasAccessToSettingsPage: false,
+  password?: string;
+  accessToTheSettingsPage: boolean;
 };
+const initialState: UserSlice | null = null;
 
 const userSlice = createSlice({
   name: "user",
-  initialState,
+  initialState: initialState as UserSlice | null,
   reducers: {
-    altUserAccess: (state) => {
-      state.hasAccessToSettingsPage = true;
+    setUser: (state, action) => {
+      return (state = action.payload);
     },
   },
 });
 
-export const { altUserAccess } = userSlice.actions;
+export const { setUser } = userSlice.actions;
 export default userSlice.reducer;

@@ -1,6 +1,28 @@
 import Head from "next/head";
+import { useState } from "react";
+import axios from "axios";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+  const submitForm: React.FormEventHandler<HTMLFormElement> = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("/api/auth", {
+        username,
+        password,
+      });
+      if (res.status === 200) {
+        router.push("/dashboard");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <Head>
@@ -9,7 +31,13 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>Home</main>
+      <main>
+        <form onSubmit={submitForm}>
+          <input onChange={(e) => setUsername(e.target.value)} />
+          <input onChange={(e) => setPassword(e.target.value)} />
+          <button>Log in</button>
+        </form>
+      </main>
     </>
   );
 }

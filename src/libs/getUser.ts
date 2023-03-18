@@ -1,7 +1,6 @@
 import { getCookie } from "cookies-next";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { PrismaClient } from "@prisma/client";
-
 import { type User } from "@prisma/client";
 
 export default async function getUser(req: any, res: any) {
