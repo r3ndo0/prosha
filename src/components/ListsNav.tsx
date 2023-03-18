@@ -3,6 +3,7 @@ import { UserSlice } from "@/features/user/userSlice";
 import Link from "next/link";
 import { MdKeyboardBackspace } from "react-icons/md";
 export default function ListsNav() {
+  //Accessing UserSlice to Display User's Username On The Navbar
   const user = useAppSelector((store) => store.userSlice) as UserSlice;
 
   return (

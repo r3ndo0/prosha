@@ -6,10 +6,12 @@ import { useRouter } from "next/router";
 
 export default function MenuItems() {
   const router = useRouter();
-
+  //Accessing User's Authorities To Check If He Should Be Able To Click On Settings Link
   const { accessToTheSettingsPage } = useAppSelector(
     (store) => store.userSlice
   ) as UserSlice;
+
+  //SignOut Functionality (Removing Token From The Browser Cookies)
   const signOut = () => {
     removeCookies("token");
     router.push("/");

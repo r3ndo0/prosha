@@ -13,6 +13,9 @@ function Lists() {
 }
 
 export default Lists;
+
+// Restricting User's Access To The Lists Page If He Is Not Signed In
+
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const user = await getUser(req, res);
 

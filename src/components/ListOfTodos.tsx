@@ -3,12 +3,17 @@ import { useGetSomeTodosQuery } from "@/features/todos/todosApi";
 import TodoItem from "./TodoItem";
 
 function ListOfTodos() {
+  //Tracking The Pagination Dynamic Number
   const [pageNumber, setPageNumber] = useState(0);
+  //Fetching Data From JsonPaceHolder With RTK-QUERY
   const { data, error, isLoading } = useGetSomeTodosQuery(
     pageNumber.toString()
   );
+  //Loading State UI
   if (isLoading) return <div>LOADING...</div>;
+  //ERROR State UI
   if (error) return <div className="text-7xl text-rose-600">ERROR...</div>;
+
   return (
     <div className="h-full w-full flex px-12 flex-col gap-8">
       {data &&
