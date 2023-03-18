@@ -24,6 +24,7 @@ export default Dashboard;
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const user = await getUser(req, res);
+
   if (user) {
     return {
       props: user,
