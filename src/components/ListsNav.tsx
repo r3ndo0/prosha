@@ -4,7 +4,7 @@ import Link from "next/link";
 import { MdKeyboardBackspace } from "react-icons/md";
 export default function ListsNav() {
   //Accessing UserSlice to Display User's Username On The Navbar
-  const user = useAppSelector((store) => store.userSlice) as UserSlice;
+  const user = useAppSelector((store) => store.userSlice);
 
   return (
     <nav className=" mb-8 flex justify-between px-24 items-center bg-gray-900 py-4 text-gray-200 w-full ">

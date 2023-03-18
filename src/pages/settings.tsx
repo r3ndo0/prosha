@@ -7,9 +7,9 @@ function Settings() {
     </div>
   );
 }
-// Restricting User's Access To The Settings If He Is Not Signed In Or He Doesn't Have The Authority
 
 export default Settings;
+// Restricting User's Access To The Settings If He Is Not Signed In Or He Doesn't Have The Authority
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const user = await getUser(req, res);
   if (user?.accessToTheSettingsPage) {

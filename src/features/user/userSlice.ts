@@ -4,7 +4,6 @@ export type UserSlice = {
   createdAt: Date;
   updatedAt: Date;
   username: string;
-  password?: string;
   accessToTheSettingsPage: boolean;
 };
 const initialState: UserSlice | null = null;
@@ -16,8 +15,11 @@ const userSlice = createSlice({
     setUser: (state, action) => {
       return (state = action.payload);
     },
+    clearUser: (state) => {
+      return (state = initialState);
+    },
   },
 });
 
-export const { setUser } = userSlice.actions;
+export const { setUser, clearUser } = userSlice.actions;
 export default userSlice.reducer;
