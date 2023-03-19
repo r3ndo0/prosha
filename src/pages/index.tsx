@@ -7,7 +7,8 @@ import { useRouter } from "next/router";
 export default function Home() {
   const router = useRouter();
 
-  // Sign In Handler
+  // Sign In Handler - There are 2 Users in the stored in the Database with prefixed fields
+  //this is Just a showcase of 2 Users with and without access to the settings Page
   const signInHandler = async (username: string) => {
     try {
       const res = await axios.post("/api/auth", {

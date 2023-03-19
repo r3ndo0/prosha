@@ -3,6 +3,8 @@ import jwt, { JwtPayload } from "jsonwebtoken";
 import { PrismaClient } from "@prisma/client";
 import { type User } from "@prisma/client";
 
+//The getUser Function grabs the Token on req , Verifies it , returns the userData without the password
+
 export default async function getUser(req: any, res: any) {
   const prisma = new PrismaClient();
 

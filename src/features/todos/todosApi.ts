@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import type { TodosType } from "@/types/todosType";
 
-// Define a service using a base URL and expected endpoints
+// Fetching Todos from JsonPlaceholder with rtk-query
 export const todosApi = createApi({
   reducerPath: "todosApi",
   baseQuery: fetchBaseQuery({

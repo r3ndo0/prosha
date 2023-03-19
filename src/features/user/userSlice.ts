@@ -8,6 +8,8 @@ export type UserSlice = {
 };
 const initialState: UserSlice | null = null;
 
+//userSlice is kinda pointless in the system I coded but to showCase I have a basic Knowledge of Redux
+
 const userSlice = createSlice({
   name: "user",
   initialState: initialState as UserSlice | null,
