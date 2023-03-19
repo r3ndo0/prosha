@@ -1,6 +1,6 @@
-First Off Clone The Repo
+Clone The Repo
 
-Then Install Packages
+Install Packages
 
 ```bash
 npm i
